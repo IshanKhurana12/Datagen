@@ -16,21 +16,20 @@ const Data = (props) => {
 
     useEffect(()=>{  
     if(data.length!==0){
-        //step1 is i am getting key value pair from object enteries
+        
         for(const [key,value] of Object.entries(data)){
             console.log("key:" +key);
             console.log("value:"+value);
 
-        //step2-values is also an object 
         for(const enteries of Object.values(value)){
-            //step3 check if we have array or obj structute inside 
+           
              if(Array.isArray(enteries)){
-                //if its array
+               
                 enteries.forEach(entry=>{
                    console.log("entry:"+ typeof(entry));
-                   total+=entry.totalcost || 0;//if no total cost exist set 0
+                   total+=entry.totalcost || 0;
                    totalDelivered+=parseInt(entry.delivered || 0);
-                  //pushing to table arr so it becomes easy to map
+                
                    tabledataa.push({
                     key,
                     smscost:entry.smscost || "N/A",
@@ -40,11 +39,11 @@ const Data = (props) => {
                    });
                 });
              }else{
-                //if its object
+              
                 for (const subentry of Object.values(enteries)){
                     total+=subentry.totalcost || 0;
                     totalDelivered+=parseInt(subentry.delivered || 0);
-                    //add table data
+                    
                     tabledataa.push({
                         key,
                         smscost:subentry.smscost || "N/A",
@@ -80,10 +79,10 @@ const Data = (props) => {
             const filtertotal = select 
             ? tabledata.reduce((acc, data) => {
                 if (data.key === select) {
-                    return acc + data.totalcost; // Accumulate total cost
+                    return acc + data.totalcost; 
                 }
-                return acc; // Return the accumulator unchanged if not matching
-            }, 0) // Start with an initial value of 0
+                return acc; 
+            }, 0) 
             : totalcost;
 
 
