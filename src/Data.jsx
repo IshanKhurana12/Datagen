@@ -9,7 +9,7 @@ const Data = (props) => {
     let submissons=0;
     const [tabledata,settabledata]=useState([]);
     let tabledataa=[];
-    const [select,setselect]=useState("Select a service");
+    const [select,setselect]=useState("");
     const [result,setresult]=useState();
     console.log(data)
 
@@ -140,7 +140,6 @@ const Data = (props) => {
 
     {filteredRows.map((data)=>(
         <>
-     
        <tr key={data.key}>
         <td >{data.key}</td>
         <td>{data.smscost}</td>
